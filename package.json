@@ -1,0 +1,17 @@
+{
+    "name": "Implementing the omdb api using nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "myRequest.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Maria D. Campbell",
+    "license": "ISC",
+    "dependencies": {
+        "request": "^2.85.0"
+    },
+    "devDependencies": {
+        "eslint": "^4.18.2"
+    }
+}
