@@ -5,12 +5,10 @@
 
 const request = require('request');
 const http = require('http');
-// prints index.html to the console
-let myOMDB;
+
 const movies = ['saw', 'reds', 'titanic', 'the sting', 'scary movie', 'sunset boulevard', 'scream', 'rear window', 'all about eve', 'suspicion'];
 
 function getMovies(arr) {
-    // const myMovies = document.getElementById('movie-container');
     for (let i = 0; i < arr.length; i++) {
         request('https://www.omdbapi.com/?apikey=60f7bdd3&t=' + movies[i],
             function(err, response, body) {
