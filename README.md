@@ -68,15 +68,16 @@ returned by createServer is an **EventEmitter**. Here, it is `http`, which I req
 
 The magic happens within the body of the `createServer()` method. First I pass two arguments, `req` and `res`, to the anonymous function passed to `http.createServer()`. When an HTTP request hits the OMDB server, node calls the request handler with a few handy objects for dealing with the `transaction`: res (response) and req (request). But to actually serve requests, as mentioned above, the listen method needs to be called on the server object. In most cases, as here, all I need to do is pass the port number I want the server to listen on to `.listen()`. There are some [other options](https://nodejs.org/api/http.html) as well.
 
-The second line of the http.createServer() method is very important:
+The second line of the `http.createServer()` method is very important:
 
 ```
 res.writeHead(200, { 'Content-Type': 'text/html' });
 ```
+`writHead` writes the **HTTP header** (with status of 200).
 
 The `content-type:text/html` is required for browsers to recognize a page as HTML. The `content-type` is not part of the `HTML5 (or HTML4)` spec. It's part of the **HTTP headers**. It is what tells the browser what kind of content is is receiving.
 
-Once I have made sure that the browser recgnizes my content as HTML, I can loop over the array of movies and return their data as HTML. I do this by mapping over the movies array:
+Once I have made sure that the browser recognizes my content as `HTML`, I can loop over the array of movies and return their **data** as `HTML`. I do this by **mapping** over the **movies array**:
 
 ```
 movies.map((movie, i) => {
@@ -87,6 +88,11 @@ movies.map((movie, i) => {
         res.write('<p><b>Actors:</b> ' + movies[i]["Actors"] + '</p></div>');
     })
 ```
+The `res` object is a `WritableStream`, so writing a response body to the client is just a matter of using `stream methods`. `body` is first introduced in the anonymous function passed to the `request()` method in the **first part** of the application. It is then passed to the `JSON.parse()` method to convert it from a string into a `JS object`. This `JS object` is then stored as the value of `movies[i]`. That is what makes looping over the movies array and returning all the movies data in html format possible, thereby rendering them to the page.
+
+The `res.end()` method, which follows the `.map()` method, writes the `body` and closes the `res`.
+
+The last part of the callback to the `createServer() method is the .listen() method, which listens for port 8080, and prints `Server has started ...` to the **Terminal** console.
 
 **Related Resources:**
 
@@ -99,3 +105,5 @@ movies.map((movie, i) => {
 [What is the loopback device and how do I use it?](https://askubuntu.com/questions/247625/what-is-the-loopback-device-and-how-do-i-use-it)
 
 [Should I have to include res.writeHead in node.js when I deal with HTML5?](https://stackoverflow.com/questions/17003590/should-i-have-to-include-res-writehead-in-node-js-when-i-deal-with-html5)
+
+[response.writeHead and response.end in NodeJs](https://stackoverflow.com/questions/14243100/response-writehead-and-response-end-in-nodejs)
