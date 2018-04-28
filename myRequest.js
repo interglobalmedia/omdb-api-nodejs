@@ -6,7 +6,7 @@
 const request = require('request');
 const http = require('http');
 
-const movies = ['saw', 'reds', 'titanic', 'the sting', 'scary movie', 'sunset boulevard', 'scream', 'rear window', 'all about eve', 'the birds'];
+const movies = ['shawshank redemption', 'reds', 'titanic', 'the sting', 'poltergeist', 'sunset boulevard', 'scream', 'rear window', 'all about eve', 'the birds'];
 
 function getMovies(arr) {
     for (let i = 0; i < arr.length; i++) {
