@@ -1,4 +1,4 @@
-# Implementing the OMDB API Using Nodejsis
+# Implementing the OMDB API Using Node.js
 
 This little project is a n"odification" of the OMDB API project from Week 8. Here, we will be going over how one can protect/hide one's API key by adding a backend server to the application.
 
