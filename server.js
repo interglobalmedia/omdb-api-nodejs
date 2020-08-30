@@ -49,9 +49,9 @@ http.createServer(function (req, res) {
         res.write(
             `<div id="movie-container" style="margin: 0 auto; text-align: center"><img src=${poster}>`
         )
-        res.write('<br><h1>' + movies[i]['Title'] + '</h1>')
-        res.write('<p><b>Release Date:</b> ' + movies[i]['Year'] + '</p>')
-        res.write('<p><b>Actors:</b> ' + movies[i]['Actors'] + '</p></div>')
+        res.write(`<br><h1>${movies[i]['Title']}</h1>`)
+        res.write(`<p><b>Release Date:</b> ${movies[i]['Year']}</p>`)
+        res.write(`<p><b>Actors:</b>  ${movies[i]['Actors']}</p></div>`)
     })
     res.end()
 }).listen(8080, function () {
