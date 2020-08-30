@@ -13,10 +13,10 @@ const http = require('http');
 
 The `http` **node module** enables access to a `localhost/dev server` on a computer. The interface is careful to never buffer entire **requests** or **responses**, so the user is able to stream data. The `request` **npm package** is designed to be the simplest way possible to make **http calls**. It supports **HTTPS** and follows redirects by default.
 
-Next, there is the function definition/declaration for `function getMovies(arr)` to which the parameter `arr` is passed. Within the body of the function, a request is made to the OMDB api:
+Next, there is the function definition/declaration for `function getMovies(arr)` to which the parameter `arr` is passed. Within the body of the function, a request is made to the OMDB API:
 
 ``` js
-request('https://www.omdbapi.com/?apikey=60f7bdd3&t=' + movies[i],
+request( `https://www.omdbapi.com/?apikey=${env.API_KEY}&t=${movies[i]}` ,
 ```
 
 `movies[i]` refers to the (global) **movies array** I create that is the value of the argument passed into `function getMovies(arr)` . Why `movies[i]` ? The `request` is looped over because I am making a request to retrieve data for a ***number*** of movies, not just one:
@@ -26,8 +26,7 @@ const movies = ['saw', 'reds', 'titanic', 'the sting', 'scary movie', 'sunset bo
 
 function getMovies(arr) {
     for (let i = 0; i < arr.length; i++) {
-        request(
-`https://www.omdbapi.com/?apikey=${env.API_KEY}&t=${movies[i]}` ,
+        request( `https://www.omdbapi.com/?apikey=${env.API_KEY}&t=${movies[i]}` ,
             function(err, response, body) {
                 if (!err && response.statusCode === 200) {
                     movies[i] = JSON.parse(body)
@@ -76,8 +75,10 @@ The ***magic*** happens within the body of the `createServer()` method. First I 
 
 The second line of the `http.createServer()` method is very important:
 
-``` 
-res.writeHead(200, { 'Content-Type': 'text/html' });
+``` js
+res.writeHead(200, {
+    'Content-Type': 'text/html'
+})
 ```
 
 `writHead` writes the **HTTP header** (with status of 200).
