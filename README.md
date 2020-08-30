@@ -1,12 +1,12 @@
 # Implementing the OMDB API Using Node.js
 
-This little project is a n"odification" of the OMDB API project from Week 8. Here, we will be going over how one can protect/hide one's API key by adding a backend server to the application.
+This little project is a "nodification" of the OMDB API project from Week 8. Here, we will be going over how one can protect/hide one's API key by adding a backend server to the application.
 
 As there would be with **React**, there are essentially two parts to this little movie scraping app.
 
 First, before I did anything else, I had to require the `request` **npm package** at the top of the file, and the built-in `http` node module:
 
-``` 
+``` js
 const request = require('request');
 const http = require('http');
 ```
@@ -15,13 +15,13 @@ The `http` **node module** enables access to a `localhost/dev server` on a compu
 
 Next, there is the function definition/declaration for `function getMovies(arr)` to which the parameter `arr` is passed. Within the body of the function, a request is made to the OMDB api:
 
-``` 
+``` js
 request('https://www.omdbapi.com/?apikey=60f7bdd3&t=' + movies[i],
 ```
 
 `movies[i]` refers to the (global) **movies array** I create that is the value of the argument passed into `function getMovies(arr)` . Why `movies[i]` ? The `request` is looped over because I am making a request to retrieve data for a ***number*** of movies, not just one:
 
-``` 
+``` js
 const movies = ['saw', 'reds', 'titanic', 'the sting', 'scary movie', 'sunset boulevard', 'scream', 'rear window', 'all about eve', 'suspicion'];
 
 function getMovies(arr) {
@@ -48,10 +48,12 @@ The `if` **statement** states that if there is **no error** and the **response s
 
 Now for **part two**. **Part two** **writes** the **data** to the page:
 
-``` 
+``` js
 // https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/
 http.createServer(function(req, res) {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
     movies.map((movie, i) => {
         let poster = movies[i]["Poster"];
         res.write('<div id="movie-container" style="margin: 0 auto; text-align: center"><img src=' + poster + '>');
@@ -82,14 +84,14 @@ The `content-type:text/html` is required for browsers to recognize a page as HTM
 
 Once I have made sure that the **browser** ***recognizes*** my content as `HTML` , I can loop over the **array of movies** and return their **data** as `HTML` . I do this by **mapping** over the **movies array**:
 
-``` 
+``` js
 movies.map((movie, i) => {
-        let poster = movies[i]["Poster"];
-        res.write('<div id="movie-container" style="margin: 0 auto; text-align: center"><img src=' + poster + '>');
-        res.write('<br><h1>' + movies[i]["Title"] + '</h1>');
-        res.write('<p><b>Release Date:</b> ' + movies[i]["Year"] + '</p>');
-        res.write('<p><b>Actors:</b> ' + movies[i]["Actors"] + '</p></div>');
-    })
+    let poster = movies[i]["Poster"];
+    res.write('<div id="movie-container" style="margin: 0 auto; text-align: center"><img src=' + poster + '>');
+    res.write('<br><h1>' + movies[i]["Title"] + '</h1>');
+    res.write('<p><b>Release Date:</b> ' + movies[i]["Year"] + '</p>');
+    res.write('<p><b>Actors:</b> ' + movies[i]["Actors"] + '</p></div>');
+})
 ```
 
 The `res` object is a `WritableStream` , so writing a `res body` to the **client** is just a matter of using `stream methods` . `body` is first introduced in the **anonymous callback function** passed to the `request()` method in the **first part** of the application. It is then passed to the `JSON.parse()` method to convert it from a string into a `JS object` . This `JS object` is then stored as the value of `movies[i]` . That is what makes looping over the movies array and returning all the movies data in **html format** possible, thereby ***rendering*** them to the page.
@@ -100,7 +102,7 @@ The last part of the **callback** to the `createServer()` method is the `.listen
 
 ***Last***, but **not least**, is the **call** to `getMovies()` :
 
-``` 
+``` js
 getMovies(movies);
 ```
 
