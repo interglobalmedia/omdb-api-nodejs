@@ -26,18 +26,20 @@ const movies = ['saw', 'reds', 'titanic', 'the sting', 'scary movie', 'sunset bo
 
 function getMovies(arr) {
     for (let i = 0; i < arr.length; i++) {
-        request('https://www.omdbapi.com/?apikey=60f7bdd3&t=' + movies[i],
+        request(
+`https://www.omdbapi.com/?apikey=${env.API_KEY}&t=${movies[i]}` ,
             function(err, response, body) {
                 if (!err && response.statusCode === 200) {
-                    movies[i] = JSON.parse(body);
-                    const actors = JSON.parse(body)["Actors"];
-                    const releaseDate = JSON.parse(body)["Released"];
-                    const year = JSON.parse(body)["Year"];
-                    const poster = JSON.parse(body)["Poster"];
-                    console.log(releaseDate);
-                    console.log(movies[i]);
+                    movies[i] = JSON.parse(body)
+                    const actors = JSON.parse(body)['Actors']
+                    const releaseDate = JSON.parse(body)['Released']
+                    const year = JSON.parse(body)['Year']
+                    const poster = JSON.parse(body)['Poster']
+                    console.log(releaseDate)
+                    console.log(movies[i])
                 }
-            })
+            }
+        )
     }
 }
 ```
