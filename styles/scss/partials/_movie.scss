@@ -13,12 +13,26 @@
         max-width: 324px;
         height: 30px;
         margin-top: 1.25rem;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+    }
+
+    [name="page"] {
+        height: 30px;
+        margin-top: 1.25rem;
+        border-radius: 5px;
+        outline: none;
+        border: none;
     }
 
     [type="submit"] {
         width: 100%;
         max-width: 60px;
         height: 30px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
     }
 
     .container {
@@ -26,7 +40,7 @@
         flex-direction: column;
         justify-content: center;
         margin: 1.5rem auto;
-        width: 100%;
+        width: 90%;
         max-width: 600px;
         padding-top: 1rem;
         padding-bottom: 1rem;

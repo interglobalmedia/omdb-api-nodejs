@@ -8,14 +8,14 @@
         <div class="wrapper">
             <h1 class="movie-data"><%= message %></h1>
 
-            <form action="/results" method="GET">
-                <input type="text" placeholder="Search" name="search" autofocus>
-                <input type="submit">
+            <form id="data" action="/results" method="GET">
+                <input type="text" placeholder="Search" name="search" autofocus required>
+                <button type="submit" name="data-submit">Submit</button>
             </form>
         </div>
     </div>
     <%- include ("./partials/footer") %>
-    <script src="scripts/js/app.js"></script>
+    <script src="scripts/js/data.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,18 @@
 [placeholder="Search"],
-[placeholder="Search Again"] {
+[placeholder="Search Again"],
+[placeholder='Enter Page'] {
     padding: 0px 5px;
+}
+
+.total-results,
+.total-pages {
+    font-size: 1.2rem;
+}
+
+.total-results {
+    margin-top: 1rem;
+}
+
+.total-pages {
+    margin-bottom: 0.25rem;
 }
