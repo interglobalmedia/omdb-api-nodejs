@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $PastelGreen;
+    font-family: 'Cutive Mono', monospace;
+}
+
+a,
+a:active,
+a.hover {
+    margin: 1.5rem auto 1.5rem;
+    font-size: 1.3rem;
+    color: $LightPink;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+li {
+    margin: 0.5rem;
+}
