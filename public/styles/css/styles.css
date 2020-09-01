@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+body {
+  background: #31a354;
+  font-family: 'Cutive Mono', monospace; }
+
+a,
+a:active,
+a.hover {
+  margin: 1.5rem auto 1.5rem;
+  font-size: 1.3rem;
+  color: pink; }
+
+ul,
+li {
+  list-style: none; }
+
+li {
+  margin: 0.5rem; }
+
+[placeholder="Search"],
+[placeholder="Search Again"] {
+  padding: 0px 5px; }
+
+.wrapper {
+  margin: 3rem auto;
+  width: 100%;
+  text-align: center; }
+  .wrapper .search-results {
+    color: #c7e9c0;
+    margin-bottom: 0.75rem; }
+  .wrapper [name="search"] {
+    width: 70%;
+    max-width: 324px;
+    height: 30px;
+    margin-top: 1.25rem; }
+  .wrapper [type="submit"] {
+    width: 100%;
+    max-width: 60px;
+    height: 30px; }
+  .wrapper .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1.5rem auto;
+    width: 100%;
+    max-width: 600px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background: #99d1e7;
+    border: 2px solid black; }
+    .wrapper .container li {
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+      word-break: break-all;
+      font-size: 1.2rem;
+      background: #99d1e7; }
+      .wrapper .container li img {
+        width: 100%;
+        max-width: 600px;
+        border: 2px solid black;
+        margin-bottom: 1.5rem; }
+
+[src='N/A'] {
+  display: none; }
+
+#credits {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem; }
+
+:root {
+  --space: 1.5em 0;
+  --space: 2em 0; }
+
+.Site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; }
+
+.Site-content {
+  flex: 1 0 auto;
+  padding: var(--space) var(--space) 0;
+  width: 100%; }
+
+.Site-content:after {
+  content: "\00a0";
+  display: block;
+  margin-top: var(--space);
+  height: 0;
+  visibility: hidden; }
