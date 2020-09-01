@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon src/server.js -e js, ejs",
         "scss": "node-sass --watch styles/scss/ -o public/styles/css/",
-        "lint:ejs1": "ejslint templates/pages/results.ejs"
+        "lint:ejs1": "ejslint templates/pages/results.ejs",
+        "lint:ejs2": "ejslint templates/index.ejs"
     },
     "author": "Maria D. Campbell",
     "license": "ISC",

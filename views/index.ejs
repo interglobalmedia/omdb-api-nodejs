@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include ("./partials/head") %>
+
+<body class="Site">
+    <div class="Site-content">
+        <div class="wrapper">
+            <h1 class="movie-data"><%= message %></h1>
+
+            <form action="/results" method="GET">
+                <input type="text" placeholder="Search" name="search" autofocus>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+    <%- include ("./partials/footer") %>
+    <script src="scripts/js/app.js"></script>
+</body>
+
+</html>
