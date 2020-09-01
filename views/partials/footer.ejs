@@ -1,0 +1,11 @@
+<!--templates/partials/footer.ejs-->
+<footer id="credits">
+        <script>
+            const theDate = new Date();
+            const footer = document.querySelector("#credits");
+            footer.style.fontWeight = "600";
+            footer.style.letterSpacing = "0.07rem";
+            footer.innerHTML =
+                `<p>© ${theDate.getFullYear()} Maria D. Campbell</p>`;
+        </script>
+    </footer>

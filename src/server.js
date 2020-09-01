@@ -15,8 +15,8 @@ const getMovie = require('./utils/getMovie')
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
 // set up view engine directory
-const viewsPath = path.join(__dirname, '../templates')
-const partialsPath = path.join(__dirname, '../templates/partials')
+const viewsPath = path.join(__dirname, '../views')
+const partialsPath = path.join(__dirname, '../views/partials')
 
 app.set('views', viewsPath)
 app.set('view engine', 'ejs')
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(publicDirectoryPath))
 //home page route
 app.get('/', (req, res) => {
-    res.render('pages/index', {
+    res.render('index', {
         title: 'Movie Data',
         name: 'Maria D. Campbell',
         message: 'Get Movie Data',
