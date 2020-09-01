@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
+/* media query variables */
 * {
   padding: 0;
   margin: 0;
@@ -23,8 +24,19 @@ li {
   margin: 0.5rem; }
 
 [placeholder="Search"],
-[placeholder="Search Again"] {
+[placeholder="Search Again"],
+[placeholder='Enter Page'] {
   padding: 0px 5px; }
+
+.total-results,
+.total-pages {
+  font-size: 1.2rem; }
+
+.total-results {
+  margin-top: 1rem; }
+
+.total-pages {
+  margin-bottom: 0.25rem; }
 
 .wrapper {
   margin: 3rem auto;
@@ -37,17 +49,29 @@ li {
     width: 70%;
     max-width: 324px;
     height: 30px;
-    margin-top: 1.25rem; }
+    margin-top: 1.25rem;
+    border-radius: 5px;
+    outline: none;
+    border: none; }
+  .wrapper [name="page"] {
+    height: 30px;
+    margin-top: 1.25rem;
+    border-radius: 5px;
+    outline: none;
+    border: none; }
   .wrapper [type="submit"] {
     width: 100%;
     max-width: 60px;
-    height: 30px; }
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: none; }
   .wrapper .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 1.5rem auto;
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     padding-top: 1rem;
     padding-bottom: 1rem;
