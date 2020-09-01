@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="styles/css/styles.css">
+</head>
+
+<body class="Site">
+    <div class="Site-content">
+        <div class="wrapper">
+            <h1 class="search-results"><%= message %></h1>
+            <a href="/"> Search Again </a>
+            <form action="/results" method="GET">
+                <input type="text" placeholder="Search Again" name="search" autofocus>
+                <input type="submit">
+            </form>
+            <% data["Search"].map(function(movie) { %>
+            <ul class="container">
+                <li><img src="<%= movie["Poster"] %>" /></li>
+                <li>Movie: <%= movie["Title"] %></li>
+                <li>Year: <%= movie["Year"] %></li>
+                <li>Type: <%= movie["Type"] %></li>
+                <li>Movie ID: <%= movie["imdbID"] %></li>
+            </ul>
+            <% }); %>
+        </div>
+    </div>
+    <footer id="credits">
+        <script>
+            const theDate = new Date();
+            const footer = document.querySelector("#credits");
+            footer.style.fontWeight = "600";
+            footer.style.letterSpacing = "0.07rem";
+            footer.innerHTML =
+                `<p>© ${theDate.getFullYear()} Maria D. Campbell</p>`;
+        </script>
+    </footer>
+    <script src="scripts/js/app.js"></script>
+</body>
+
+</html>
