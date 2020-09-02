@@ -7,10 +7,10 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
 const request = require('request')
+const logger = require('morgan')
+errorHandler = require('errorhandler')
 const ejs = require('ejs')
-const http = require('http')
 const env = require('../config/env')
-const getMovie = require('./utils/getMovie')
 
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -20,6 +20,8 @@ const partialsPath = path.join(__dirname, '../views/partials')
 
 app.set('views', viewsPath)
 app.set('view engine', 'ejs')
+
+app.use(logger('combined'))
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -56,6 +58,31 @@ app.get('/results', function (req, res) {
                 totalItems: data['totalResults'],
             })
         }
+    })
+})
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (env === 'development') {
+    errorHandler.title = 'Error Page'
+    app.use(errorHandler())
+    res.status(err.status || 500)
+    res.render('error', {
+        message: err.message,
+        error: err,
+        title: errorHandler.title,
+    })
+}
+
+// production error handler
+// no stack traces leaked to user
+app.use(function (error, req, res, next) {
+    res.status(error.status || 500)
+    res.render('error', {
+        title: `Error Page`,
+        message: `No search results. Try again!`,
     })
 })
 
