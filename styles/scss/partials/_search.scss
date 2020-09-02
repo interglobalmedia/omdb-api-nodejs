@@ -1,5 +1,5 @@
-[placeholder="Search"],
-[placeholder="Search Again"],
+[placeholder='Search'],
+[placeholder='Search Again'],
 [placeholder='Enter Page'] {
     padding: 0px 5px;
 }
@@ -11,6 +11,10 @@
 
 .total-results {
     margin-top: 1rem;
+}
+
+.error-data {
+    margin-bottom: 1.5rem;
 }
 
 .total-pages {
