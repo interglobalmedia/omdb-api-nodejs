@@ -6,17 +6,17 @@ const path = require('path')
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 8080
-const request = require('request')
 const logger = require('morgan')
-errorHandler = require('errorhandler')
-const ejs = require('ejs')
+const errorHandler = require('errorhandler')
 const env = require('../config/env')
+const ejs = require('ejs')
+const routes = require('../routes/index')
+const results = require('../routes/results')
 
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
 // set up view engine directory
 const viewsPath = path.join(__dirname, '../views')
-const partialsPath = path.join(__dirname, '../views/partials')
 
 app.set('views', viewsPath)
 app.set('view engine', 'ejs')
@@ -28,39 +28,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // define path for Express config
 app.use(express.static(publicDirectoryPath))
-//home page route
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Movie Data',
-        name: 'Maria D. Campbell',
-        message: 'Get Movie Data',
-    })
-})
-app.get('/results', function (req, res) {
-    let query = req.query.search
-    let page = +req.query.page || 1
-    console.log(query)
-    const itemsPerPage = 10
-    let totalItems
-    const url = `https://www.omdbapi.com/?s=${query}&page=${page}&apikey=${env.API_KEY}`
-    request(url, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            const data = JSON.parse(body)
-            totalItems = data['totalResults']
-            console.log(data)
-            console.log(data['totalResults'])
-            res.render('pages/results', {
-                data: data,
-                totalPages: Math.ceil(totalItems / itemsPerPage),
-                title: 'Movie Search Results',
-                message: `Movie Search Results`,
-                query: req.query.search,
-                totalItems: data['totalResults'],
-            })
-        }
-    })
-})
 
+//home page route
+app.use('/', routes)
+// results route
+app.use('/results', results)
 // error handlers
 
 // development error handler
@@ -78,7 +50,7 @@ if (env === 'development') {
 
 // production error handler
 // no stack traces leaked to user
-app.use(function (error, req, res, next) {
+app.use((error, req, res, next) => {
     res.status(error.status || 500)
     res.render('error', {
         title: `Error Page`,
