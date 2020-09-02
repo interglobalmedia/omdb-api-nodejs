@@ -5,6 +5,12 @@
 
 <body class="Site">
     <div class="Site-content">
+        <button class="scroll bottom"><span class="material-icons">
+                keyboard_arrow_down
+            </span></button>
+        <a href="#" class="scroll top"><span class="material-icons">
+                keyboard_arrow_up
+            </span></a>
         <div class="wrapper">
             <h1 class="search-results"><%= message %></h1>
             <a href="/">Search Again</a>
@@ -25,15 +31,15 @@
                 <li>Movie ID: <%= movie["imdbID"] %></li>
             </ul>
             <% }); %>
-                </ul>
-            
-            </div>
-        </div>
-        
+            </ul>
+
         </div>
     </div>
+
+    </div>
+    </div>
     <%- include ("../partials/footer") %>
-                <script src="scripts/js/results.js"></script>
+    <script src="scripts/js/results.js"></script>
 </body>
 
 </html>

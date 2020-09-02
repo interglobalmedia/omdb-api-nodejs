@@ -23,6 +23,35 @@ li {
 li {
   margin: 0.5rem; }
 
+/*  scroll */
+.scroll {
+  position: fixed;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  display: block;
+  text-align: center;
+  line-height: 45px;
+  color: #fff100;
+  font-size: 2.75rem;
+  text-decoration: none;
+  z-index: 1000;
+  background: rgba(131, 90, 138, 0.6); }
+  .scroll.bottom {
+    top: 0;
+    right: 0; }
+  .scroll.top {
+    bottom: -25px;
+    right: 0; }
+
+button.scroll.bottom {
+  cursor: pointer;
+  outline: none;
+  border: none; }
+
+.material-icons {
+  font-size: 2.75rem; }
+
 [placeholder='Search'],
 [placeholder='Search Again'],
 [placeholder='Enter Page'] {

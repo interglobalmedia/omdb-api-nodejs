@@ -1,0 +1,37 @@
+/*  scroll */
+.scroll {
+
+    position: fixed;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    display: block;
+    text-align: center;
+    line-height: 45px;
+    color: $FrenchYellow;
+
+    font-size: 2.75rem;
+    text-decoration: none;
+    z-index: 1000;
+    background: rgba(131, 90, 138, 0.6);
+
+    &.bottom {
+        top: 0;
+        right: 0;
+    }
+
+    &.top {
+        bottom: -25px;
+        right: 0;
+    }
+}
+
+button.scroll.bottom {
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+.material-icons {
+    font-size: 2.75rem;
+}

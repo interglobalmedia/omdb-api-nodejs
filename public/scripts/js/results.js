@@ -13,3 +13,13 @@ resultsBtn.addEventListener('mousedown', function () {
         this.innerHTML = `Submit`
     }
 })
+
+/* Scroll to bottom button code */
+const scrollButton = document.querySelector('.scroll')
+
+function scrollStep() {
+    window.scroll(0, window.pageYOffset + 100)
+    console.log(window.pageYOffset + 100)
+}
+
+scrollButton.addEventListener('click', scrollStep)
