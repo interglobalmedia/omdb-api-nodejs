@@ -23,9 +23,6 @@ app.set('view engine', 'ejs')
 
 app.use(logger('combined'))
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }))
-
 // define path for Express config
 app.use(express.static(publicDirectoryPath))
 
