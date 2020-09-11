@@ -23,13 +23,14 @@ app.set('view engine', 'ejs')
 
 app.use(logger('combined'))
 
-// define path for Express config
+// define path for Express static files config
 app.use(express.static(publicDirectoryPath))
 
 //home page route
 app.use('/', routes)
 // results route
 app.use('/results', results)
+
 // error handlers
 
 // development error handler
