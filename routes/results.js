@@ -15,19 +15,19 @@ router.get('/', async (req, res) => {
 
         console.log(response.body)
         const data = JSON.parse(response.body)
-        totalItems = data['totalResults']
         console.log(data)
-        console.log(data['totalResults'])
+        totalItems = data['totalResults']
+        console.log(totalItems)
         res.render('pages/results', {
-            data: data,
+            data,
             totalPages: Math.ceil(totalItems / itemsPerPage),
             title: 'Movie Search Results',
             message: `Movie Search Results`,
-            query: req.query.search,
-            totalItems: data['totalResults'],
+            query,
+            totalItems,
         })
     } catch (error) {
-        console.log(error.urlResponse.body)
+        console.log(error.response.body)
     }
 })
 
