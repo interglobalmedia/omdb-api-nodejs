@@ -5,13 +5,15 @@
 const path = require('path')
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 8080
 const logger = require('morgan')
 const errorHandler = require('errorhandler')
 const env = require('../config/env')
 const ejs = require('ejs')
 const routes = require('../routes/index')
 const results = require('../routes/results')
+const config = require('../config/config')
+
+console.log(`NODE_ENV=${config.NODE_ENV}`);
 
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -31,20 +33,23 @@ app.use('/', routes)
 // results route
 app.use('/results', results)
 
-// error handlers
+// registration of errorhandler middleware for development
+app.use(errorHandler())
 
 // development error handler
 // will print stacktrace
-if (env === 'development') {
-    errorHandler.title = 'Error Page'
-    app.use(errorHandler())
-    res.status(err.status || 500)
-    res.render('error', {
-        message: err.message,
-        error: err,
-        title: errorHandler.title,
-    })
-}
+app.use((req, res, next) => {
+    if (config.NODE_ENV === 'development') {
+        errorHandler.title = 'Error Page'
+        res.status(err.status || 500)
+        res.render('error', {
+            message: err.message,
+            error: err,
+            title: errorHandler.title,
+        })
+    }
+})
+
 
 // production error handler
 // no stack traces leaked to user
@@ -56,6 +61,6 @@ app.use((error, req, res, next) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port} ...`)
+app.listen(config.PORT, () => {
+    console.log(`Server listening on ${config.PORT} ...`)
 })
