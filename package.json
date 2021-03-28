@@ -1,6 +1,6 @@
 {
     "name": "omdb-api-nodejs",
-    "version": "2.0.0",
+    "version": "0.2.0",
     "description": "Implementing the omdb api using nodejs",
     "main": "src/server.js",
     "scripts": {
@@ -22,6 +22,9 @@
         "hoek": "^5.0.4",
         "morgan": "^1.10.0",
         "node-sass": "^4.14.1"
+    },
+    "engines": {
+        "node": "14.4.0"
     },
     "devDependencies": {
         "ejs-lint": "^1.1.0",

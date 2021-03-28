@@ -1,19 +1,14 @@
-// https://www.npmjs.com/package/request
-
-// Request is designed to be the simplest way possible to make http calls.
-// It supports HTTPS and follows redirects by default.
 const path = require('path')
 const express = require('express')
 const app = express()
 const logger = require('morgan')
 const errorHandler = require('errorhandler')
-const env = require('../config/env')
-const ejs = require('ejs')
 const routes = require('../routes/index')
 const results = require('../routes/results')
-const config = require('../config/config')
 
-console.log(`NODE_ENV=${config.NODE_ENV}`);
+const port = process.env.PORT || 8080
+
+const node_env = process.env.NODE_ENV || 'development'
 
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -38,29 +33,32 @@ app.use(errorHandler())
 
 // development error handler
 // will print stacktrace
-app.use((req, res, next) => {
-    if (config.NODE_ENV === 'development') {
-        errorHandler.title = 'Error Page'
-        res.status(err.status || 500)
-        res.render('error', {
-            message: err.message,
-            error: err,
-            title: errorHandler.title,
-        })
-    }
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+	if (node_env === 'development') {
+		errorHandler.title = 'Error Page'
+		res.status(err.status || 500)
+		res.render('error', {
+			message: err.message,
+			error: err,
+			title: errorHandler.title,
+		})
+	}
 })
 
 
 // production error handler
 // no stack traces leaked to user
+// eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
-    res.status(error.status || 500)
-    res.render('error', {
-        title: `Error Page`,
-        message: `No search results. Try again!`,
-    })
+	res.status(error.status || 500)
+	res.render('error', {
+		title: `Error Page`,
+		message: `No search results. Try again!`,
+	})
 })
 
-app.listen(config.PORT, () => {
-    console.log(`Server listening on ${config.PORT} ...`)
+app.listen(port, () => {
+	// eslint-disable-next-line no-console
+	console.log(`Server listening on ${port} ...`)
 })
