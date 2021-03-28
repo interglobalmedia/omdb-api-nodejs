@@ -21,7 +21,6 @@
                 <input type="number" name="page" placeholder="Enter Page" required>
                 <button type="submit" name="results-submit">Submit</button>
             </form>
-            </form>
             <% data["Search"].forEach(function(movie) { %>
             <ul class="container">
                 <li><img src="<%= movie["Poster"] %>" /></li>
@@ -31,13 +30,9 @@
                 <li>Movie ID: <%= movie["imdbID"] %></li>
             </ul>
             <% }); %>
-            </ul>
-
         </div>
     </div>
 
-    </div>
-    </div>
     <%- include ("../partials/footer") %>
     <script src="scripts/js/results.js"></script>
 </body>
