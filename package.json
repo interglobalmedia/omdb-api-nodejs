@@ -9,7 +9,7 @@
         "dev": "set NODE_ENV=development && nodemon src/server.js -e js, ejs",
         "scss": "node-sass --watch styles/scss/ -o public/styles/css/",
         "lint:ejs1": "ejslint templates/pages/results.ejs",
-        "lint:ejs2": "ejslint templates/index.ejs"
+        "lint:ejs2": "ejslint views/index.ejs"
     },
     "author": "Maria D. Campbell",
     "license": "ISC",
