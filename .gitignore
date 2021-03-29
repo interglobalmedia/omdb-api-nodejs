@@ -1,6 +1,4 @@
 node_modules/
 config/
 .env
-src/utils/
-src/myRequest.js
 omdb-api-nodejs-notes.md

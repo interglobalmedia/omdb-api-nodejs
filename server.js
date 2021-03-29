@@ -58,7 +58,11 @@ app.use((error, req, res, next) => {
 	})
 })
 
-app.listen(port, () => {
-	// eslint-disable-next-line no-console
-	console.log(`Server listening on ${port} ...`)
-})
+if(NODE_ENV === 'development') {
+	app.listen(port, () => {
+		// eslint-disable-next-line no-console
+		console.log(`Server listening on ${port} ...`)
+	})
+} else {
+	app.listen(process.env.PORT || 8080)
+}
