@@ -2,11 +2,10 @@ const express = require('express')
 const router = express.Router()
 const got = require('got')
 // eslint-disable-next-line no-unused-vars
-const env = require('../config/env')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const api_key = process.env.API_KEY
+const API_KEY = process.env.API_KEY
 
 router.get('/', async (req, res) => {
 	let query = req.query.search
@@ -15,7 +14,7 @@ router.get('/', async (req, res) => {
 	console.log(query)
 	const itemsPerPage = 10
 	let totalItems
-	const url = `https://www.omdbapi.com/?s=${query}&page=${page}&apikey=${api_key}`
+	const url = `https://www.omdbapi.com/?s=${query}&page=${page}&apikey=${API_KEY}`
 	try {
 		const response = await got(url)
 		// eslint-disable-next-line no-console

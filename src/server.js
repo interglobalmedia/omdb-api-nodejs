@@ -3,15 +3,15 @@ const express = require('express')
 const app = express()
 const logger = require('morgan')
 const errorHandler = require('errorhandler')
-const routes = require('./routes/index')
-const results = require('./routes/results')
+const routes = require('../routes/index')
+const results = require('../routes/results')
 
 const node_env = process.env.NODE_ENV || 'development'
 
 // set up static directory to serve
-const publicDirectoryPath = path.join(__dirname, './public')
+const publicDirectoryPath = path.join(__dirname, '../public')
 // set up view engine directory
-const viewsPath = path.join(__dirname, './views')
+const viewsPath = path.join(__dirname, '../views')
 
 app.set('views', viewsPath)
 app.set('view engine', 'ejs')
