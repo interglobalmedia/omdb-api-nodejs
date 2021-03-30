@@ -5,8 +5,13 @@ const logger = require('morgan')
 const errorHandler = require('errorhandler')
 const routes = require('../routes/index')
 const results = require('../routes/results')
+// eslint-disable-next-line no-unused-vars
+const dotenv = require('dotenv')
+dotenv.config()
 
 const node_env = process.env.NODE_ENV || 'development'
+
+const NODE_ENV = process.env.NODE_ENV || 'development'
 
 // set up static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -56,4 +61,6 @@ app.use((error, req, res, next) => {
 	})
 })
 
-app.listen(process.env.PORT || 8080)
+app.listen(process.env.PORT || 8080, () => {
+	console.log(`Server running ...`)
+})
